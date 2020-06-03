@@ -1,13 +1,12 @@
 import React from 'react';
 import './App.css';
+import Home from './Pages/Home';
 
 function App() {
   return (
-   
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-   
+    <Home/>
+  
+
   );
 }
 
