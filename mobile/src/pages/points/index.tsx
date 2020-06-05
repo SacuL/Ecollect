@@ -88,7 +88,8 @@ const Points = () => {
     useEffect(() => {
         api.get('items').then(response => {
             setItems(response.data);
-            setSelectedItems(items.map(item => item.id));
+            const items_id = (response.data as Item[]).map(item => item.id);
+            setSelectedItems(items_id);
         });
     }, []);
 
