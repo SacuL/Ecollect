@@ -2,11 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { Feather as Icon } from '@expo/vector-icons';
 import Constants from 'expo-constants';
 import { View, StyleSheet, Text, TouchableOpacity, ScrollView, Image, SafeAreaView, Alert } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useRoute } from '@react-navigation/native';
 import MapView, { Marker } from 'react-native-maps';
-import { SvgUri } from 'react-native-svg';
+import { SvgUri, Svg } from 'react-native-svg';
 import api from '../../services/api';
 import * as ExpoLocation from 'expo-location';
+import LayersSVG from '../../../assets/svgComponents/LayersSVG';
 
 interface Item {
     id: number;
@@ -22,12 +23,19 @@ interface Point {
     longitude: number;
 }
 
+interface Params {
+    state: string;
+    city: string;
+}
+
 const Points = () => {
     const [items, setItems] = useState<Item[]>([]);
     const [points, setPoints] = useState<Point[]>([]);
     const [selectedItems, setSelectedItems] = useState<number[]>([]);
     const [initialPosition, setInitialPosition] = useState<[number, number]>([0, 0]);
     const navigation = useNavigation();
+    const route = useRoute();
+    const routeParams = route.params as Params;
 
     function handleNavigateBack() {
         navigation.goBack();
@@ -45,6 +53,14 @@ const Points = () => {
             setSelectedItems(filteredItems);
         } else {
             setSelectedItems([...selectedItems, id]);
+        }
+    }
+
+    function handleSelectAll() {
+        if (selectedItems.length === items.length) {
+            setSelectedItems([]);
+        } else {
+            setSelectedItems(items.map(item => item.id));
         }
     }
 
@@ -78,9 +94,9 @@ const Points = () => {
     useEffect(() => {
         api.get('points', {
             params: {
-                city: "Abaiara",
-                state: "Ceará",
-                items: [2]
+                city: routeParams.city,
+                state: routeParams.state,
+                items: selectedItems
             }
         }).then(response => {
             setPoints(response.data);
@@ -94,7 +110,6 @@ const Points = () => {
                 <TouchableOpacity onPress={handleNavigateBack}>
                     <Icon name="arrow-left" size={20} color="#34cb79" />
                 </TouchableOpacity>
-
 
                 <Text style={styles.title}> Welcome </Text>
                 <Text style={styles.description}> Find a collection point on the map. </Text>
@@ -145,6 +160,20 @@ const Points = () => {
                     showsHorizontalScrollIndicator={true}
                     contentContainerStyle={{ paddingHorizontal: 20 }}
                 >
+
+                    <TouchableOpacity
+                        activeOpacity={0.6}
+                        style={[
+                            styles.item,
+                            selectedItems.length === items.length ? styles.selectedItem : {}
+                        ]}
+                        onPress={() => handleSelectAll()}
+                    >
+                        <View style={styles.selectAllImage}>
+                            <LayersSVG />
+                        </View>
+                        <Text style={styles.itemTitle}>All</Text>
+                    </TouchableOpacity>
                     {items.map(item => (
                         <TouchableOpacity
                             activeOpacity={0.6}
@@ -166,6 +195,10 @@ const Points = () => {
 }
 
 const styles = StyleSheet.create({
+    selectAllImage: {
+        width: 42,
+        height: 42,
+    },
     container: {
         flex: 1,
         paddingHorizontal: 32,

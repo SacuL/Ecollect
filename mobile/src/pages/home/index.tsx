@@ -20,7 +20,10 @@ const Home = () => {
     // const [citiesList, setCitiesList] = useState<Item[]>([]);
 
     function handleNavigateToPoints() {
-        navigation.navigate("Points");
+        navigation.navigate("Points", {
+            state: selectedState,
+            city: selectedCity
+        });
     }
 
     useEffect(() => {
