@@ -8,19 +8,24 @@ class PointsController {
 
         const { city, state, items } = request.query;
 
-        const parsedItems = String(items).
-            split(',')
-            .map(item => Number(item.trim()));
+        let query = knex('points');
 
-        const points = await knex('points')
-            .join('point_items', 'points.id', '=', 'point_items.point_id')
-            .whereIn('point_items.item_id', parsedItems)
-            .where('city', String(city))
+        if (items) {
+            const parsedItems = String(items).
+                split(',')
+                .map(item => Number(item.trim()));
+
+            query = query
+                .join('point_items', 'points.id', '=', 'point_items.point_id')
+                .whereIn('point_items.item_id', parsedItems);
+        }
+
+        const queryConditions = query.where('city', String(city))
             .where('state', String(state))
             .distinct()
             .select('points.*');
 
-        return response.json(points);
+        return response.json(await queryConditions);
 
     }
 
@@ -36,7 +41,7 @@ class PointsController {
         const items = await knex('items')
             .join('point_items', 'items.id', '=', 'point_items.item_id')
             .where('point_items.point_id', id)
-            .select('items.title');
+            .select('items.title', 'items.id');
 
         return response.json({ point, items });
     }
