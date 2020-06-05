@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Feather as Icon } from '@expo/vector-icons';
-import { View, Image, StyleSheet, Text, ImageBackground, SafeAreaView, Alert, KeyboardAvoidingView, Platform, Keyboard, TouchableWithoutFeedback } from 'react-native';
+import { View, Image, StyleSheet, Text, ImageBackground, SafeAreaView, Alert, KeyboardAvoidingView, Platform } from 'react-native';
 import { RectButton, TextInput } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
 import * as ExpoLocation from 'expo-location';
@@ -16,8 +16,6 @@ const Home = () => {
     const [selectedCountry, setSelectedCountry] = useState<string>();
     const [selectedState, setSelectedState] = useState<string>();
     const [selectedCity, setSelectedCity] = useState<string>();
-    // const [statesList, setStatesList] = useState<Item[]>([]);
-    // const [citiesList, setCitiesList] = useState<Item[]>([]);
 
     function handleNavigateToPoints() {
         navigation.navigate("Points", {
