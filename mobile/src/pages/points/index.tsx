@@ -88,20 +88,26 @@ const Points = () => {
     useEffect(() => {
         api.get('items').then(response => {
             setItems(response.data);
+            setSelectedItems(items.map(item => item.id));
         });
     }, []);
 
     useEffect(() => {
-        api.get('points', {
-            params: {
-                city: routeParams.city,
-                state: routeParams.state,
-                items: selectedItems
-            }
-        }).then(response => {
-            setPoints(response.data);
-        });
-    }, []);
+
+        if (selectedItems.length === 0) {
+            setPoints([]);
+        } else {
+            api.get('points', {
+                params: {
+                    city: routeParams.city,
+                    state: routeParams.state,
+                    items: selectedItems
+                }
+            }).then(response => {
+                setPoints(response.data);
+            });
+        }
+    }, [selectedItems]);
 
     return (
         <SafeAreaView style={{ flex: 1 }}>
