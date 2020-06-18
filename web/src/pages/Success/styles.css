@@ -18,12 +18,31 @@
   margin: 48px 0 0;
 }
 
+#page-home .content footer {
+  margin-bottom: 8px;
+}
+
+#page-home .content footer p {
+  color: #a5a5a5;
+  font-size: 12px;
+}
+
 #page-home .content main {
   flex: 1;
   max-width: 560px;
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+#page-home .content main .badges{
+  margin-top: 8px;
+  display: flex;
+}
+
+#page-home .content main img {
+  min-width: 148px;
+  max-width: 186px;
 }
 
 #page-home .content main h1 {

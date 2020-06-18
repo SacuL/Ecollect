@@ -93,11 +93,12 @@ const CreatePoint = () => {
     }, [selectedState]);
 
     useEffect(() => {
-        navigator.geolocation.getCurrentPosition(pos => {
-            const { latitude, longitude } = pos.coords;
-            setInitialPosition([latitude, longitude]);
-        })
-
+        if ('geolocation' in navigator) {
+            navigator.geolocation.getCurrentPosition(pos => {
+                const { latitude, longitude } = pos.coords;
+                setInitialPosition([latitude, longitude]);
+            })
+        }
     }, []);
 
 
@@ -165,7 +166,7 @@ const CreatePoint = () => {
 
         await api.post('points', data);
 
-        history.push('/');
+        history.push('/sucess');
     }
 
 
