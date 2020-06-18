@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import { FiArrowLeft } from 'react-icons/fi';
 
 import './styles.css';
 import logo from '../../assets/logo.svg';
@@ -7,17 +9,21 @@ import googlePlayBadge from '../../assets/google-play-badge.png';
 
 const Success = () => {
     return (
-        <div id="page-home">
+        <div id="page-success">
             <div className="content">
                 <header>
                     <img src={logo} alt="Ecollect" />
+                    <Link to="/">
+                        <FiArrowLeft />
+                        Back to home
+                    </Link>
                 </header>
                 <main>
                     <h1>
                         Point created!
                     </h1>
                     <p>
-                        Now download the app:
+                        Now download the app and dispose of your waste conveniently.
                     </p>
 
                     <div className="badges">
