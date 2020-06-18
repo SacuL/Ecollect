@@ -166,7 +166,7 @@ const CreatePoint = () => {
 
         await api.post('points', data);
 
-        history.push('/sucess');
+        history.push('/success');
     }
 
 
