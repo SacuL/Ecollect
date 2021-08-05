@@ -2,6 +2,143 @@
     <img alt="Ecollect" title="#Ecollect" src="./assets/banner.png" />
 </h1>
 
+[Versão em português](#portuguese-version)
+
+## 💻 About the project
+
+Ecollect - is a way to connect companies and entities that collect organic and inorganic waste to people who need to dispose of their waste in an environmentally friendly way.
+
+Companies or entities can register on the web platform by sending:
+- an image of the collection point
+- entity name, email and whatsapp
+- and the address so it can appear on the map
+- in addition to selecting one or more collection items:
+   - lamps
+   - Batteries
+   - papers and cardboard
+   - electronic waste
+   - organic waste
+   - kitchen oil
+
+Users will have access to the mobile app, where they will be able to:
+- browse the map to see registered companies
+- contact the entity via E-mail or WhatsApp
+
+### 🎨 Mobile
+
+<p align="center">
+  <img alt="Ecollect" title="#Ecollect" src="./assets/home-mobile.jpg" width="200px">
+
+  <img alt="Ecollect" title="#Ecollect" src="./assets/detalhes-mobile.jpg" width="200px">
+</p>
+
+### 🎨 Web
+
+<p align="center" style="display: flex; align-items: flex-start; justify-content: center;">
+  <img alt="Ecollect" title="#Ecollect" src="./website.gif">
+</p>
+
+ 
+## 🛠 Technologies
+
+The following tools were used in the construction of the project:
+
+- [Expo][expo]
+- [Node.js][nodejs]
+- [React][reactjs]
+- [React Native][rn]
+- [TypeScript][typescript]
+
+
+## 🚀 How to run the project
+
+We can consider this project as being divided into three parts:
+1. Back End (server folder)
+2. Front End (web folder)
+3. Mobile (mobile folder)
+
+💡Both Front End and Mobile need the Back End to be running to function.
+
+### Prerequisites
+
+Before starting, you will need to have the following tools installed on your machine:
+[Git](https://git-scm.com), [Node.js][nodejs].
+Also it's nice to have an editor to work with the code like [VSCode][vscode]
+
+### 🎲 Running Back End
+
+```bash
+# Clone this repo
+$ git clone https://github.com/sacul/ecollect
+
+# Change current folder to project folder
+$ cd Ecollect
+
+# Go to server folder
+$ cd server
+
+# Install dependencies
+$ npm install
+
+# Run on dev mode
+$ npm run dev:server
+
+# Server should start on port 3333. Go to http://localhost:3333 
+```
+
+### 🧭 Runnning web app (Front End)
+
+```bash
+# Clone this repo
+$ git clone https://github.com/sacul/ecollect
+
+# Change current folder to project folder
+$ cd Ecollect
+
+# Go to web folder
+$ cd web
+
+# Install dependencies
+$ npm install
+
+# Run on dev mode
+$ npm run start
+
+# App shouçd run on port 3000. Go to http://localhost:3000
+```
+
+### 📱Running mobile app
+
+```bash
+# Clone this repo
+$ git clone https://github.com/sacul/ecollect
+
+# Change current folder to project folder
+$ cd Ecollect
+
+# Go to mobile folder
+$ cd mobile
+
+# Install dependencies
+$ npm install
+
+# Run app using Expo and follow Expo instructions
+$ npm start
+```
+
+## 😯 How to contribute to the project
+
+1. **Fork** the project.
+2. Create a new branch with your changes: `git checkout -b my-feature`
+3. Save the changes and create a commit message describing what you've done: `git commit -m "feature: My new feature"`
+4. Push your changes: `git push origin my-feature`
+> If you have any questions, check out this [GitHub Contribution Guide](https://github.com/firstcontributions/first-contributions)
+
+
+Project developed during **NLW - Next Level Week** offered by [Rocketseat](rs).
+
+
+# Portuguese Version
 
 ## 💻 Sobre o projeto
 
