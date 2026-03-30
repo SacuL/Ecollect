@@ -15,7 +15,7 @@
   "dependencies": {
     "celebrate": "^12.1.1",
     "cors": "^2.8.5",
-    "express": "^4.21.2",
+    "express": "^4.22.1",
     "i": "^0.3.7",
     "knex": "^2.4.0",
     "multer": "^2.0.2",
